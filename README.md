@@ -48,9 +48,10 @@ There is no public source release to fork or build — the project ships as preb
    .\scripts\Invoke-Gl552vwPreflight.ps1 -DriverFolder "C:\Drivers\NVIDIA-extracted"
    ```
 
-2. Download the packages from the official directory — see [docs/downloads.md](docs/downloads.md).
-3. Follow [docs/install-guide.md](docs/install-guide.md) in order. Do not skip the reboot between the main package and GPU drivers.
-4. Keep [docs/troubleshooting.md](docs/troubleshooting.md) open for rollback and common failure modes.
+2. If Windows 7 is not installed yet, start with [docs/usb-installer.md](docs/usb-installer.md) (MBR vs GPT, BIOS settings, and the "No device drivers were found" USB 3.0 fix).
+3. Download the packages from the official directory — see [docs/downloads.md](docs/downloads.md).
+4. Follow [docs/install-guide.md](docs/install-guide.md) in order. Do not skip the reboot between the main package and GPU drivers.
+5. Keep [docs/troubleshooting.md](docs/troubleshooting.md) open for rollback and common failure modes.
 
 ## Credits and links
 

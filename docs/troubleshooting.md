@@ -14,6 +14,9 @@ In order of preference:
 
 ## Common symptoms
 
+**Setup says "No device drivers were found" before disks appear**
+That is the Windows 7 USB 3.0 problem during installation, covered step by step in [usb-installer.md](usb-installer.md) — start by moving the stick to the USB 2.0 port.
+
 **Code 12 on one adapter ("This device cannot find enough free resources")**
 Known dual-GPU/UEFI issue that upstream addressed in the Nov 19 main package. Confirm you installed `wddm2_nov19_final.7z` (not the Nov 17 build) and rebooted between the main package and the GPU drivers. If it persists, roll back and re-approach with Intel only, verify, then add NVIDIA.
 
