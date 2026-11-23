@@ -52,6 +52,11 @@ Download Intel's USB 3.0 eXtensible Host Controller driver for Windows 7 (Skylak
 
 ### 5. Permanent fix: inject drivers into the ISO (DISM)
 
+Where do the drivers come from in 2026? Intel no longer offers the Windows 7 USB 3.0 driver as a standalone download, but Gigabyte still hosts its **Windows USB Installation Tool** (`mb_utility_windowsimagetool.zip`) for Intel 100/200-series boards, and the zip bundles Intel's signed Windows 7 x64 driver under `USB\IntelUSB30\Drivers\Win7\x64` (`iusb3xhc.inf`, `iusb3hub.inf`) plus `HCSwitch\x64` (`iusb3hcs.inf`). You have two ways to use it:
+
+- **Easiest (GUI):** run the tool itself against a prepared Rufus stick and tick "Add USB drivers". It patches the stick in place.
+- **Most controlled (what we did for the Nov 22, 2026 VetTV build):** use the zip only as the driver source and inject with DISM as below, working on copies of the WIMs so the originals stay untouched until the patched files verify. Our run patched `boot.wim` indexes 1–2 and `install.wim` indexes 1–4, confirmed all three INFs (`iusb3hub`, `iusb3xhc`, `iusb3hcs`) inside each image with `dism /get-drivers`, hash-checked the copies written back to the stick, kept the originals under `\backup-original-wims\` on the stick, and left the plain driver files in `\drivers\usb3-intel-win7-x64\` for Browse/post-install use. The Skylake xHCI hardware ID covered by the driver is `PCI\VEN_8086&DEV_A12F`.
+
 On a Windows PC with the ADK/deployment tools or any Windows 10/11 install (DISM is built in), inject the USB 3.0 drivers into both images so every future install just works. Run from an elevated prompt with the ISO extracted to `C:\win7usb` and drivers extracted to `C:\usb3`:
 
 ```cmd
